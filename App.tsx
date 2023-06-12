@@ -29,6 +29,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppNavigator from './AppNavigator';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ThemeProvider, createTheme } from '@rneui/themed';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -132,14 +134,20 @@ function App(): JSX.Element {
     }
   }
 
-  if (!hasNfc) {
-    return (
-      <View style={styles.sectionContainer}>
-        <Text>NFC not supported</Text>
-      </View>
-    )
-  }
-
+  // if (!hasNfc) {
+  //   return (
+  //     <View style={styles.sectionContainer}>
+  //       <Text>NFC not supported</Text>
+  //     </View>
+  //   )
+  // }
+  const theme = createTheme({
+    components: {
+      Button: {
+        raised: true,
+      },
+    },
+  });
   return (
     // <SafeAreaView style={styles.sectionContainer}>
     //   <Text>Hello world</Text>
@@ -153,9 +161,13 @@ function App(): JSX.Element {
     //     <Text>Scan a Tag</Text>
     //   </TouchableOpacity>
     // </SafeAreaView>
-    <NavigationContainer>
-      <AppNavigator/>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <AppNavigator/>
+        </NavigationContainer>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
   
   // return (

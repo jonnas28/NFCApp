@@ -128,3 +128,36 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+android/
+ios/
+
+# IntelliJ
+.idea/caches/
+
+# force IDE to resolve dependencies
+.idea/libraries/
+
+# Ignore Gradle project-specific cache directory
+.gradle/
+
+# Ignore Gradle build output directory
+build/
+
+# Intellij, Android Studio
+*.iml
+
+# Local settings, path to SDK etc.
+local.properties
+
+# results of `gradle/version-up.sh` script
+version.properties
+
+# CircliCI hash
+CACHE_HASH*
+
+# Publishing credentials
+credentials.properties
+
+# local maven repository for debug
+.maven-local/
